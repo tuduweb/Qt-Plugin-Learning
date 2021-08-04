@@ -15,6 +15,7 @@ public:
 public:
     Type m_type;
 public:
+    PluginInterface(){};
     virtual ~PluginInterface() {}
     virtual void Init(QString resPath) = 0;
 };

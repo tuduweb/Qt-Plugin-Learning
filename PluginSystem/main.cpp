@@ -16,6 +16,9 @@
 
 using namespace std;
 
+#include "../HelloPlugin/HelloPlugin.h"
+#include "../PluginInterface/PluginInterface.h"
+
 int main(int argc, char* argv[])
 {
 	QApplication app(argc, argv);
@@ -26,6 +29,8 @@ int main(int argc, char* argv[])
 	view->setWindowTitle("upper monitor");
     view->resize(400, 300);
 	view->show();
+
+	HelloPlugin* plugin = new HelloPlugin();
 
 	return app.exec();
 }

@@ -5,7 +5,6 @@ cmake_minimum_required (VERSION 3.10.1)
 
 project(obc)
 
-
 # 包含子项目。
 #add_subdirectory ("CMakeProject")
 #add_subdirectory("PluginSystem")
@@ -42,6 +41,11 @@ message("QT_LIBS ${OBC_QT_LIBS}")
 #baselib sources
 include(PluginInterface/PluginInterface.cmake)
 
+set(HELLOPLUGIN_PROVIDER "module" CACHE STRING "HelloPlugin Provider")
+#include
+include(HelloPlugin/HelloPlugin.cmake)
+
+# 生成静态库
 add_library(obc_baselib STATIC
     ${PLUGIN_INTERFACE_HEADERS}
 )
@@ -71,6 +75,11 @@ target_include_directories(obc PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/PluginSystem
 )
 
+# 链接
 target_link_libraries(obc PUBLIC
     obc_baselib
+)
+
+target_link_libraries(obc PUBLIC
+    ${HELLOPLUGIN_LIBRARY}
 )
